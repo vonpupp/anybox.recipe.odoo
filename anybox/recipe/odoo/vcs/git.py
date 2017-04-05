@@ -57,6 +57,9 @@ class GitRepo(BaseRepo):
             if depth <= 0:
                 raise invalid
             self.options['depth'] = depth
+        reference = self.options.pop('reference', None)
+        if reference is not None and reference != 'None':
+            self.options['reference'] = reference
 
     @property
     def git_version(self):
