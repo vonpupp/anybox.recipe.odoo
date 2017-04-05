@@ -57,6 +57,10 @@ class GitRepo(BaseRepo):
             if depth <= 0:
                 raise invalid
             self.options['depth'] = depth
+        # git clone --reference ~/gitcaches/oca/ocb git@github.com:oca/ocb.git
+        reference = self.options.pop('reference', None)
+        if reference is not None and reference != 'None':
+            self.options['reference'] = reference
 
     @property
     def git_version(self):
